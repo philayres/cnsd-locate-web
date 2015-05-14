@@ -1,0 +1,36 @@
+.tweet-item {
+  
+    background: rgba(255,255,255,0.2);
+    padding: 6px;
+    margin: 3px;
+    font-size: 18px;
+      
+    
+    :hover {cursor: pointer;}
+    
+  
+  .tweet-head {
+    font-size: 95%;
+    font-weight: bold;
+  }
+    
+  .tweet-body {
+      float: none;
+      clear: both;
+  }
+  .tweet-date {font-size: 90%;}  
+  .tweet-date:before { 
+        
+  }
+}
+
+.tweet-item.in-map {
+    color: #333;
+    text-shadow: none;
+    font-size: 14px;
+  }
+  
+.tweet-list {
+  height: 600px;
+  overflow: auto;
+}

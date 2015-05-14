@@ -1,0 +1,115 @@
+<%
+@updated_at = File.mtime(__FILE__)
+@created_at = File.mtime(__FILE__)
+%>
+<div class="inner cover first " style="min-height:1000px">
+  <div class="container">
+    <h3 class="lead">Since 2009, Consected has been helping companies and <span class="nobreak">non-profits</span> understand how processes and technology can help them work better. This is a demo of what we do.</h3>
+    <p>The map below shows the location we have guessed you are located at, based on your IP address. The markers on the map show Tweets around this location. Click a marker to view the tweet. Or scroll through the tweet list and click it to see where on the map it was located.</p>
+  </div>
+  <div id="your-location-is">
+    
+  </div>
+</div>
+
+<script id="your-location-is-template" type="text/x-handlebars-template">
+  <div class="row text-left">    
+    <div class="col-sm-12 col-md-9 col-lg-6">    
+      <div style="width:552px; margin:0 auto;">
+        <div style="width:550px; height:450px;" id="map-canvas" ></div>    
+        <p>
+          Did we guess your location correctly?
+          Your IP address <strong>{{ip}}</strong>
+          appears to be located near:
+        </p>
+        <div class="adr">        
+          <span class="locality">{{location_details.city_name}}</span> 
+          <span class="region">{{location_details.subdivision_1_name}}</span> 
+          <span class="region">{{location_details.subdivision_2_name}}</span>
+          <span class="postal-code">{{postal_code}}</span>
+          <div class="country-name">{{location_details.country_name}}</div>
+        </div>
+        <p>
+          <a href="#" class="do-browser-locate btn btn-default">No</a> <a href="#" class="ip-loc-ok-feedback btn btn-default">Yes</a>
+        </p>
+        <p>
+        {{latitude}}&deg;, {{longitude}}&deg;
+        </p>
+      </div>
+    </div>    
+    <div class="col-sm-12 col-md-3 col-lg-6">
+      <div id="tweets-near-here"></div>    
+    </div>
+  </div>
+  <p><br/></p>
+  <p>
+    This demonstration includes open source GeoLite2 data created by MaxMind, available from
+    <a href="http://www.maxmind.com">http://www.maxmind.com</a>. 
+  </p>
+  <p>Based on user feedback we supplement the data to provide more accuracy. If you would like access to the free (no cost, open source, no warranty) supplementary IP list, <a href="/contact">contact us</a></p>
+  </div>
+</script>
+
+<script id="tweets-near-here-template" type="text/x-handlebars-template">  
+  <div class="tweet-list">
+  {{#each tweets}}
+  
+  <div class="tweet-item" id="tweet-item-{{id}}">
+    <div class="tweet-head"><img class="img img-thumbnail pull-left" src="{{user.profile_image_url_https}}" style="margin-right: 1em;"/> 
+      <div><span class="pull-right tweet-date">{{local_date created_at}}</span> @{{user.screen_name}}<br/>{{user.name}}</div>        
+      <div class="hidden tweet-distance">{{_distance}}</div>
+    </div>        
+    <div class="tweet-body">    
+    <p>{{{_html}}}</p>
+    </div>    
+    <div class="tweet-media">        
+      {{#each entities.media}}
+        <a href="#" data-img-src="{{media_url_https}}" class="view-image-modal" data-toggle="modal" data-target="#view-image-modal"><img src="{{media_url_https}}:thumb" class="img img-thumbnail"/></a>
+      {{/each}}    
+    </div>
+  </div>
+    
+  {{/each}}
+  </div>
+  
+</script>
+
+<script>
+  $(document).ready(function(){
+   
+    var yli_block = $('#your-location-is');      
+    var l = new cnsd.locate();  
+    var t = new cnsd.tweets();
+    
+    var loaded_new_loc = function(block, data){         
+      window.setTimeout(function(){l.show_map('map-canvas');}, 100);
+      var tnh_block = $('#tweets-near-here');  
+      t.near_here_for_block(tnh_block, data.latitude, data.longitude);            
+    };
+    
+    l.add_loaded_callback(loaded_new_loc);
+    
+    t.add_loaded_callback(function(block, data){
+      var tweets = data.tweets;
+      
+      t.process_tweets(tweets, l);
+      
+    });
+    
+    l.get_location_for_block(yli_block);
+
+    $(document).on('click', 'a.do-demo-iplocate', function(ev){
+      ev.preventDefault();
+      l.get_location_for_block(yli_block, '50-138-223-72');
+    });
+    
+    $(document).on('click', 'a.do-browser-locate', function(ev){
+      ev.preventDefault();
+      l.get_location_from_browser(function(ll){
+        console.log(ll);
+        loaded_new_loc(null, ll);
+      });
+    });
+  });
+</script>
+
