@@ -17,6 +17,8 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
       function(data){
         cnsd.ajax_done(block);
         
+        self._distances = data.results.distances;
+        
         for(var dti in data.tweets){
           if(data.tweets.hasOwnProperty(dti)){
             var t = data.tweets[dti];
@@ -25,18 +27,26 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
             if(t.geo && t.geo.coordinates){
               var l1 = t.geo.coordinates;
               console.log (l1);
-              t._distance = Math.pow((parseFloat(l1[0]) - parseFloat(lat)),2)  + Math.pow((parseFloat(l1[1]) - parseFloat(lng)), 2);
+              t._distance =  self._distances[t.id_str] * 0.621371;
+                      //Math.pow((parseFloat(l1[0]) - parseFloat(lat)),2)  + Math.pow((parseFloat(l1[1]) - parseFloat(lng)), 2);
               console.log(t._distance);
             }
             
-            var h = '<div class="tweet-html">' + cnsd.escape_html(t.text) + '</div>';
+            var h = '<div class="tweet-html">' + twemoji.parse(t.text) + '</div>';
             if(t.entities && t.entities.urls){              
+              t.entities._instagram = [];
               
               for(var ui in t.entities.urls){
                 if(t.entities.urls.hasOwnProperty(ui)){
                   var u = t.entities.urls[ui];                  
                   var a = '<a class="in-tweet-url" href="#" data-short-href="'+u.url+'" data-orig-url="'+u.expanded_url+'" title="open link in new window" data-toggle="popover" data-content="The full URL is: '+u.expanded_url+' " data-trigger="hover" data-placement="bottom">'+u.display_url+'</a>';
-                   h = h.replace(u.url, a);
+                  h = h.replace(u.url, a);
+                  var eurl = ''+u.expanded_url;
+                  if(eurl.indexOf('://instagram.com') > 0){
+                    if(eurl.indexOf('http://') == 0)
+                      eurl.replace('http://', 'https://');
+                    t.entities._instagram.push({media_url_https: eurl + 'media?size=l'});
+                  }
                 }
               }              
             }
@@ -74,6 +84,12 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
     var infowindow = new google.maps.InfoWindow({
           content: ""
       });
+      
+    var tweet_clicked = function(tblock){
+      $('.tweet-item').removeClass('active-tweet');
+      tblock.addClass('active-tweet');
+    };  
+    
     for(var ti in tweets){
         if(tweets.hasOwnProperty(ti)){
           var t = tweets[ti];
@@ -81,8 +97,6 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
           
           if(t.geo)            
             geo = t.geo.coordinates;
-          else if(t.coordinates)
-            geo = t.coordinates.coordinates;
             
           if(geo){
             var lat = geo[0];
@@ -98,7 +112,7 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
               });
 
               var cs_html = '<div class="tweet-item in-map"><img class="img img-thumbnail" src="'+t.user.profile_image_url_https+'"/> @'+t.user.screen_name;
-              cs_html += '<div>'+t.text+'</div>';
+              cs_html += '<div>'+twemoji.parse(t.text)+'</div>';
               var content_string = '<div class="tweet-item in-map">' + cs_html + '</div></div>';
               
               var tblock = $('#tweet-item-' + t.id);
@@ -110,7 +124,8 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
                 //infowindow.setPosition(myLatlng);
                 infowindow.open(l.map, marker);
                 
-                 $('.tweet-list').scrollTo(tblock);
+                 $('.tweet-list').scrollTo(tblock, {duration: 300});
+                 tweet_clicked(tblock);
               });
               
               tblock.click(function(ev){
@@ -118,6 +133,7 @@ cnsd.tweets.prototype = cnsd.inherit_from(cnsd.callbacks, {
                 infowindow.setContent(content_string);              
                 //infowindow.setPosition(myLatlng);
                 infowindow.open(l.map, marker);
+                tweet_clicked($(this));
               });
               
             })();

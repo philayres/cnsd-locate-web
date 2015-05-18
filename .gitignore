@@ -14,4 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/coverage/
 /config/environments/production.rb
+/config/environments/test.rb.rb
+/config/environments/development.rb

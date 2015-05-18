@@ -12,7 +12,7 @@
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js" async></script>
   <%= javascript_include_tag "application" %>
   <% if @use_google_maps %>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYQxsTaD4-7sXp5l4ZZipWn44IYi3_tkY"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= GoogleMapsApiKey %>"></script>
   <!-- OK -->
   <% end %>
   <%= csrf_meta_tags %>

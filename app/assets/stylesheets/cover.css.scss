@@ -144,6 +144,21 @@ body {
 }
 
 
+
+.ajax-running {
+  background: image-url('squares.svg') center no-repeat;
+  min-height: 150px;
+  min-width: 50px;
+}
+
+button:active, a.btn:active {
+  background: rgba(255,255,255,0.2);
+}
+
+.warning, .error {
+  border: 3px dotted silver;
+}
+
 /*
  * Affix and center
  */

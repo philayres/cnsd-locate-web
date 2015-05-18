@@ -1,5 +1,5 @@
 .tweet-item {
-  
+    
     background: rgba(255,255,255,0.2);
     padding: 6px;
     margin: 3px;
@@ -8,6 +8,7 @@
     
     :hover {cursor: pointer;}
     
+
   
   .tweet-head {
     font-size: 95%;
@@ -22,15 +23,23 @@
   .tweet-date:before { 
         
   }
+  
+  img.emoji{ width: 26px; height: 26px;}
 }
 
 .tweet-item.in-map {
     color: #333;
     text-shadow: none;
     font-size: 14px;
+    
+    img.emoji{ width: 20px; height: 20px;}
   }
   
 .tweet-list {
   height: 600px;
   overflow: auto;
+}
+
+.tweet-item.active-tweet {
+    background: rgba(255, 100, 255, 0.2);
 }

@@ -12,9 +12,12 @@ module Services
 
       render status: 400, json: {code: "BAD_LAT_LNG"}  and return if bad_request
 
-      @tweets = Tweets.new.near_here("", lat, lng)
+      radius = [1, :mi, :scale]
       
-      render json: {tweets: @tweets}
+      options = {count: 100}
+      @tweets = Tweets.new.near_here("", lat, lng, radius, options)
+      
+      render json: {tweets: @tweets, results: {radius: radius, count: @tweets.length, distances: options[:distances]}}
     end
 
   end

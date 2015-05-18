@@ -37,5 +37,5 @@ CnsdLocateWeb::Application.configure do
   TwitterConsumerKey = '4UhCiVNZfyD4KAPhcdeCgtAUd'
   TwitterConsumerKeySecret = 'RCcUV3ZgrupVLH6Wv6HsGDYKRVy0ztJWlL4YHDjby1oCHJDieO'
   
-  GoogleMapsApiKey = 'AIzaSyD_b6wPg2CjKRGjeO5oBYM2uZCveuX1Ij4'
+  GoogleMapsApiKey = 'AIzaSyCZw8PbLHPjSmyCTFqRydowad-XjFUGMjs'
 end
