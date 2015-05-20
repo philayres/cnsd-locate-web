@@ -25,6 +25,8 @@ end
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'dalli'
+
 gem 'httpclient'
 gem 'twitter'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

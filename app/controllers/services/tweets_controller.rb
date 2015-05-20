@@ -14,7 +14,7 @@ module Services
 
       radius = [1, :mi, :scale]
       
-      options = {count: 100}
+      options = {count: 100, result_type: 'mixed'}
       @tweets = Tweets.new.near_here("", lat, lng, radius, options)
       
       render json: {tweets: @tweets, results: {radius: radius, count: @tweets.length, distances: options[:distances]}}

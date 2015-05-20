@@ -16,9 +16,14 @@ class Tweets
     
     count = options[:count] || 100
     
+    not_cached = true
+    
     res = Rails.cache.fetch(opt, expires_in: 30.minutes) do
+      not_cached = false
       client.search(query, opt).take(count)
     end
+    
+    Rails.logger.info "Pulled tweets (#{opt.inspect}) from cache? #{!!not_cached}"
     
     if radius.last == :scale && res.length < 50 && radius.first < 500
       radius[0] = radius.first * 3
