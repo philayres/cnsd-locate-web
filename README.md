@@ -1,7 +1,12 @@
 cnsd-locate-web: Consected Locate web site
 ==========================================
 
-The web site is a demonstration of the types of functionality that Consected has developed. For this functionality, the site acts as an open source demonstration of how to perform certain geolocation functions in conjunction with the cnsd-locate service at: https://github.com/philayres/cnsd-locate
+This Ruby on Rails project is an open source demonstration of how to perform certain geo-location functions in conjunction with the cnsd-locate service at: https://github.com/philayres/cnsd-locate
+
+A demonstration of the site is at: http://services.consected.com 
+
+What it does
+------------
 
 The home page of the website is a JQuery AJAX page to:
 
@@ -12,9 +17,18 @@ The home page of the website is a JQuery AJAX page to:
   5. re-confirm the identified location
   6. for the closest location, show Twitter geolocated tweets pinned to the map, and in a list ordered by distance from the user's location
 
+The user interactions are requested so that feedback from the user can feed into more accurate results in the future.
+
 The aim is to extend this to also show Foursquare and Flickr geolocated posts on the map, to provide a more complete picture of activity in the local area.
 
-The website embeds Google Maps through the Javascript API and pulls data from the Twitter REST API without requiring a user's authentication (works in application mode only at this point, although there are plans to incorporate Oauth2 functionality to provide more user specific results in the future).
+Third-party APIs
+----------------
+
+The following external APIs are currently used:
+
+Google Maps Javascript API
+Twitter REST API (search API) without requiring a user's authentication (works in application mode only at this point, although there are plans to incorporate Oauth2 functionality to provide more user specific results in the future)
+
 
 License
 -------
