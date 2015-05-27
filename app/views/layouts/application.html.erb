@@ -30,7 +30,13 @@
               <%=render partial: 'layouts/navbar' %>
             </div>
           </div>
-
+          <div class="flash">
+            <% flash.each do |key, value| %>
+            <p class="alert alert-info">
+              <%= value %>
+            </p>
+            <% end %>
+          </div>
           <%=yield %>
 
           <%=render partial: 'layouts/footer'%>

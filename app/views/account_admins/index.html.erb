@@ -1,0 +1,33 @@
+<h1>Listing account_admins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Hashed password</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @account_admins.each do |account_admin| %>
+      <tr>
+        <td><%= account_admin.first_name %></td>
+        <td><%= account_admin.last_name %></td>
+        <td><%= account_admin.email %></td>
+        <td><%= account_admin.hashed_password %></td>
+        <td><%= link_to 'Show', account_admin %></td>
+        <td><%= link_to 'Edit', edit_account_admin_path(account_admin) %></td>
+        <td><%= link_to 'Destroy', account_admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account admin', new_account_admin_path %>

@@ -46,4 +46,9 @@ CnsdLocateWeb::Application.configure do
   TwitterConsumerKey = '4UhCiVNZfyD4KAPhcdeCgtAUd'
   TwitterConsumerKeySecret = 'RCcUV3ZgrupVLH6Wv6HsGDYKRVy0ztJWlL4YHDjby1oCHJDieO'
   
+  
+  AwsKey_CndsLocateWeb = 'AKIAIS43FGLLOS25XZMQ'
+  AwsSecret_CndsLocateWeb = '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'
+
+  
 end

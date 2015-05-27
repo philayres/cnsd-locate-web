@@ -29,13 +29,19 @@ CnsdLocateWeb::Application.configure do
   
   LocateServer = 'http://localhost:15501'
   LocateClientId = 'cnsd_locate_web_123yujy9812y38'
-  LocateClientSecret = '78bf1cb75a5c62efa16b133c3e1205880add6d4fd4099e989bcf6223b7a40ca2'
+  LocateClientSecret = '78bf1cb75a5c62efa16b1s33c3e1205880add6d4fd4099e989bcf6223b7a40ca2'
   
   
-  TwitterAccessToken ='76816072-zwEa6H3yUZX8k5RxchL8ldi5PzBPCcRVCasqFQHm0'
-  TwitterAccessTokenSecret = 'BEgasLfs2usyWUuTmixIyd0qJ96heE1TmwUuQVbjz0rOm'
-  TwitterConsumerKey = '4UhCiVNZfyD4KAPhcdeCgtAUd'
-  TwitterConsumerKeySecret = 'RCcUV3ZgrupVLH6Wv6HsGDYKRVy0ztJWlL4YHDjby1oCHJDieO'
+  TwitterAccessToken ='76816072-zwEa6H3yUZeX8k5RxchL8ldi5PzBPCcRVCasqFQHm0'
+  TwitterAccessTokenSecret = 'BEgasLfs2usfyWUuTmixIyd0qJ96heE1TmwUuQVbjz0rOm'
+  TwitterConsumerKey = '4UhCiVNZfyDs4KAPhcdeCgtAUd'
+  TwitterConsumerKeySecret = 'RCcUV3ZgrupVLH6Wv6HsGDYKRVyy0ztJWlL4YHDjby1oCHJDieO'
   
-  GoogleMapsApiKey = 'AIzaSyCZw8PbLHPjSmyCTFqRydowad-XjFUGMjs'
+  GoogleMapsApiKey = 'AIzaSyCZw8PbLHPjSqmyCTFqRyd9ad-XjFUGMjs'
+  
+  
+  AwsKey_CndsLocateWeb = 'AKIAIS43FGLOWS25XZMQ'
+  AwsSecret_CndsLocateWeb = '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'
+
+  
 end

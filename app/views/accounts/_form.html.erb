@@ -1,0 +1,49 @@
+<%= form_for @account, html: {class: 'centered'}  do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :owner_name %>
+    <%= f.text_field :owner_name %>
+  </div>
+
+  
+  <%= f.fields_for :account_admins do |aa| %>
+    <div class="form-group">
+      <%= aa.label :email %>
+      <%= aa.text_field :email%>
+    </div>
+    <div class="form-group">
+      <%= aa.label :first_name %>
+      <%= aa.text_field :first_name %>
+    </div>
+    <div class="form-group">
+      <%= aa.label :last_name %>
+      <%= aa.text_field :last_name %>
+    </div>
+    <div class="form-group">
+      <%= aa.label :password %>
+      <%= aa.password_field :password %>
+    </div>
+    <div class="form-group">
+      <%= aa.label :password_confirmation %>
+      <%= aa.password_field :password_confirmation %>
+    </div>
+
+  <% end %>
+
+
+  <div class="form-actions">
+    <%= go_back %>
+    <%= f.submit %>
+  </div>
+<% end %>

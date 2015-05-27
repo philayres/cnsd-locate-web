@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  
+  helpers:
+    label:
+      account:
+        owner_name: "Account Owner Name"
+      account_admins:
+        first_name: "First Name"
+        
+      login:
+        user_id: "Username"

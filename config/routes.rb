@@ -1,5 +1,14 @@
 CnsdLocateWeb::Application.routes.draw do
   
+  
+  
+  
+  resources :logins
+  
+  resources :accounts do   
+    resources :account_admins
+  end
+
   root 'pages#index'
 
   namespace :services do
