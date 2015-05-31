@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "account_admins/new", :type => :view do
   before(:each) do
-    assign(:account_admin, AccountAdmin.new(
+    assign(:account_admin, Administrator.new(
       :first_name => "MyString",
       :last_name => "MyString",
       :email => "MyString",

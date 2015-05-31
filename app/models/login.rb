@@ -1,5 +1,5 @@
 class Login < ActiveRecord::Base
-  belongs_to :account_admin
+  belongs_to :administrator
   
   attr_accessor :password
   
@@ -12,7 +12,7 @@ protected
   
   def login_correct
         
-    a = AccountAdmin.where(email: user_id, password: password).take(1)
+    a = Administrator.where(email: user_id, password: password).take(1)
     
     errors.add(:username, 'incorrect username or password') unless a.length == 1
     a  

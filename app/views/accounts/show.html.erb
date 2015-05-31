@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="pull-right" style="display: inline-block; text-align: right;">
+  <p><%= link_to 'Edit', edit_account_path(@account), class: "btn btn-primary edit-btn" %></p>
+  <p><%= link_to 'List Accounts', accounts_path, class: "btn btn-info" %></p>
+  <p><%= link_to 'Add Admin', new_account_administrator_path(@account), class: 'btn btn-default' %></p>
+</div>
+<h1>
+  Application <small><%= @account.owner_name %></small>
+</h1>
 
-<p>
-  <strong>Owner name:</strong>
-  <%= @account.owner_name %>
-</p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<h3>Account Admins</h3>
+<% @administrators = @account.administrators %>
+<%= render partial: 'administrators/index' %>
+  
+
+

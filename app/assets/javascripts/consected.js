@@ -109,4 +109,10 @@ $('html').ready(function(){
     
   });
   
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();    
+    $('[data-toggle="popover"]').popover();
+    $('[data-show-popover="auto"]').popover('show');
+  });
+  
 });

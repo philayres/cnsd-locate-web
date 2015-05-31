@@ -16,9 +16,12 @@ input[type='submit'], button, .btn.btn-primary {
     }
 }
 
-form.centered {
+form {
   display: inline-block;
-  text-align: right;  
+  text-align: right; 
+  padding: 15px;
+  
+  
 }
 
 .form-actions {
@@ -36,3 +39,16 @@ div.field_with_errors {
     color: red;
   }
 }
+
+.devise-shared-block {
+  max-width: 50%;
+  font-size: 14px;
+  text-align: left;
+  a {
+    display: inline-block;
+    margin-top: 1em;
+  }
+    
+    a.dv-login {}
+}
+

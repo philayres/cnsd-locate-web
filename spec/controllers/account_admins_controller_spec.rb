@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe AccountAdminsController, :type => :controller do
+RSpec.describe AdministratorsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # AccountAdmin. As you add validations to AccountAdmin, be sure to
@@ -38,7 +38,7 @@ RSpec.describe AccountAdminsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all account_admins as @account_admins" do
-      account_admin = AccountAdmin.create! valid_attributes
+      account_admin = Administrator.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:account_admins)).to eq([account_admin])
     end
@@ -46,7 +46,7 @@ RSpec.describe AccountAdminsController, :type => :controller do
 
   describe "GET show" do
     it "assigns the requested account_admin as @account_admin" do
-      account_admin = AccountAdmin.create! valid_attributes
+      account_admin = Administrator.create! valid_attributes
       get :show, {:id => account_admin.to_param}, valid_session
       expect(assigns(:account_admin)).to eq(account_admin)
     end
@@ -55,13 +55,13 @@ RSpec.describe AccountAdminsController, :type => :controller do
   describe "GET new" do
     it "assigns a new account_admin as @account_admin" do
       get :new, {}, valid_session
-      expect(assigns(:account_admin)).to be_a_new(AccountAdmin)
+      expect(assigns(:account_admin)).to be_a_new(Administrator)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested account_admin as @account_admin" do
-      account_admin = AccountAdmin.create! valid_attributes
+      account_admin = Administrator.create! valid_attributes
       get :edit, {:id => account_admin.to_param}, valid_session
       expect(assigns(:account_admin)).to eq(account_admin)
     end
@@ -72,25 +72,25 @@ RSpec.describe AccountAdminsController, :type => :controller do
       it "creates a new AccountAdmin" do
         expect {
           post :create, {:account_admin => valid_attributes}, valid_session
-        }.to change(AccountAdmin, :count).by(1)
+        }.to change(Administrator, :count).by(1)
       end
 
       it "assigns a newly created account_admin as @account_admin" do
         post :create, {:account_admin => valid_attributes}, valid_session
-        expect(assigns(:account_admin)).to be_a(AccountAdmin)
+        expect(assigns(:account_admin)).to be_a(Administrator)
         expect(assigns(:account_admin)).to be_persisted
       end
 
       it "redirects to the created account_admin" do
         post :create, {:account_admin => valid_attributes}, valid_session
-        expect(response).to redirect_to(AccountAdmin.last)
+        expect(response).to redirect_to(Administrator.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved account_admin as @account_admin" do
         post :create, {:account_admin => invalid_attributes}, valid_session
-        expect(assigns(:account_admin)).to be_a_new(AccountAdmin)
+        expect(assigns(:account_admin)).to be_a_new(Administrator)
       end
 
       it "re-renders the 'new' template" do
@@ -107,20 +107,20 @@ RSpec.describe AccountAdminsController, :type => :controller do
       }
 
       it "updates the requested account_admin" do
-        account_admin = AccountAdmin.create! valid_attributes
+        account_admin = Administrator.create! valid_attributes
         put :update, {:id => account_admin.to_param, :account_admin => new_attributes}, valid_session
         account_admin.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested account_admin as @account_admin" do
-        account_admin = AccountAdmin.create! valid_attributes
+        account_admin = Administrator.create! valid_attributes
         put :update, {:id => account_admin.to_param, :account_admin => valid_attributes}, valid_session
         expect(assigns(:account_admin)).to eq(account_admin)
       end
 
       it "redirects to the account_admin" do
-        account_admin = AccountAdmin.create! valid_attributes
+        account_admin = Administrator.create! valid_attributes
         put :update, {:id => account_admin.to_param, :account_admin => valid_attributes}, valid_session
         expect(response).to redirect_to(account_admin)
       end
@@ -128,13 +128,13 @@ RSpec.describe AccountAdminsController, :type => :controller do
 
     describe "with invalid params" do
       it "assigns the account_admin as @account_admin" do
-        account_admin = AccountAdmin.create! valid_attributes
+        account_admin = Administrator.create! valid_attributes
         put :update, {:id => account_admin.to_param, :account_admin => invalid_attributes}, valid_session
         expect(assigns(:account_admin)).to eq(account_admin)
       end
 
       it "re-renders the 'edit' template" do
-        account_admin = AccountAdmin.create! valid_attributes
+        account_admin = Administrator.create! valid_attributes
         put :update, {:id => account_admin.to_param, :account_admin => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -143,14 +143,14 @@ RSpec.describe AccountAdminsController, :type => :controller do
 
   describe "DELETE destroy" do
     it "destroys the requested account_admin" do
-      account_admin = AccountAdmin.create! valid_attributes
+      account_admin = Administrator.create! valid_attributes
       expect {
         delete :destroy, {:id => account_admin.to_param}, valid_session
-      }.to change(AccountAdmin, :count).by(-1)
+      }.to change(Administrator, :count).by(-1)
     end
 
     it "redirects to the account_admins list" do
-      account_admin = AccountAdmin.create! valid_attributes
+      account_admin = Administrator.create! valid_attributes
       delete :destroy, {:id => account_admin.to_param}, valid_session
       expect(response).to redirect_to(account_admins_url)
     end

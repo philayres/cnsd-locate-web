@@ -17,7 +17,7 @@
   <% end %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%=@layout ? @layout : 'regular-cover'%>">
+<body class="<%=  @layout ? @layout : 'regular-cover'%>">
   <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -37,8 +37,9 @@
             </p>
             <% end %>
           </div>
-          <%=yield %>
-
+          <div class="<%= cover_class %> <%=controller_name %> <%= action_name %>">
+            <%=yield %>
+          </div>
           <%=render partial: 'layouts/footer'%>
           <%=render partial: 'layouts/common_templates' %>
         </div>

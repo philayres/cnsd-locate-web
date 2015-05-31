@@ -1,39 +1,44 @@
 class AccountsController < ApplicationController
-  before_action :requires_authentication, except: [:new, :create]
+  
+  include AccountAccess
+  
+  before_action :authenticate_user!
       
   before_action :set_account, only: [:show, :edit, :update, :destroy]  
   
   StatusLabels = ['Disabled', 'Active', 'On-Hold']
   
-  # GET /accounts
-  # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.all_for_user current_user
   end
 
-  # GET /accounts/1
-  # GET /accounts/1.json
   def show
+    
+    if @user_status == :pending
+      redirect_to edit_administrator_path(@administrator)    
+    end    
+    
   end
 
-  # GET /accounts/new
   def new
-    @account = Account.new    
-    @account_admin = @account.account_admins.build
+    @account = Account.new
+    @administrator = @account.administrators.build
   end
 
-  # GET /accounts/1/edit
   def edit
+    
+    if @user_status == :pending
+      redirect_to edit_administrator_path(@administrator)    
+    end
   end
 
-  # POST /accounts
-  # POST /accounts.json
   def create
     @account = Account.new(account_params)
+    @account.make_current_user_admin current_user
     
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to edit_administrator_path(@account.administrators.first), notice: 'Application updated. Update your details.' }
         format.json { render action: 'show', status: :created, location: @account }
       else
         format.html { render action: 'new' }
@@ -46,11 +51,11 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1.json
   def update
 
-    #if account_params[:account_admins_attributes]['0'][:password].blank?
-    #  account_params[:account_admins_attributes]['0'].delete('password')
-     # account_params[:account_admins_attributes]['0'].delete('password_confirmation')
+    #if account_params[:administrators_attributes]['0'][:password].blank?
+    #  account_params[:administrators_attributes]['0'].delete('password')
+     # account_params[:administrators_attributes]['0'].delete('password_confirmation')
     #end
-    #puts account_params[:account_admins_attributes]['0'].delete_if {|d,v| v.blank?}
+    #puts account_params[:administrators_attributes]['0'].delete_if {|d,v| v.blank?}
     res = @account.update!(account_params)     
     
     respond_to do |format|
@@ -77,21 +82,10 @@ class AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account      
-      if params[:id] == 'me' 
-        params[:id] = @user.id
-      end
-        
-      if  params[:id] == @user.id        
-        @account = Account.find(params[:id])
-      else
-        @account = nil        
-      end
-    end
+
 
     def account_params
-      params.require(:account).permit(:owner_name, account_admins_attributes: [:id, :last_name, :first_name, :email, :password, :password_confirmation])
+      params.require(:account).permit(:owner_name, administrators_attributes: [:id, :last_name, :first_name, :email, :password, :password_confirmation])
     end
     
 end

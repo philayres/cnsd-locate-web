@@ -43,5 +43,6 @@ CnsdLocateWeb::Application.configure do
   AwsKey_CndsLocateWeb = 'AKIAIS43FGLOWS25XZMQ'
   AwsSecret_CndsLocateWeb = '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'
 
-  
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5501 }
+  config.action_mailer.mailgun_settings = {domain: 'app123example.mailgun.org', api_key: 'key-something'}
 end

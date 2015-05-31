@@ -11,23 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526230707) do
-
-  create_table "account_admins", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_digest", null: false
-  end
-
-  add_index "account_admins", ["email"], name: "index_account_admins_on_email", unique: true, using: :btree
-
-  create_table "account_admins_accounts", id: false, force: true do |t|
-    t.integer "account_admin_id", null: false
-    t.integer "account_id",       null: false
-  end
+ActiveRecord::Schema.define(version: 20150528220245) do
 
   create_table "accounts", force: true do |t|
     t.string   "owner_name"
@@ -35,6 +19,20 @@ ActiveRecord::Schema.define(version: 20150526230707) do
     t.datetime "updated_at"
     t.integer  "status",     default: 1
   end
+
+  create_table "administrators", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "status"
+  end
+
+  add_index "administrators", ["account_id"], name: "index_administrators_on_account_id", using: :btree
+  add_index "administrators", ["user_id"], name: "index_administrators_on_user_id", using: :btree
 
   create_table "logins", force: true do |t|
     t.string   "user_id"
@@ -45,5 +43,31 @@ ActiveRecord::Schema.define(version: 20150526230707) do
   end
 
   add_index "logins", ["account_admin_id"], name: "index_logins_on_account_admin_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
 end

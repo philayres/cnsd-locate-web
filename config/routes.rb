@@ -3,10 +3,11 @@ CnsdLocateWeb::Application.routes.draw do
   
   
   
-  resources :logins
+  devise_for :users
+  resources :logins, only: [:show, :index]
   
-  resources :accounts do   
-    resources :account_admins
+  resources :accounts, shallow: true do   
+    resources :administrators
   end
 
   root 'pages#index'

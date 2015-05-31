@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "account_admins/index", :type => :view do
   before(:each) do
     assign(:account_admins, [
-      AccountAdmin.create!(
+      Administrator.create!(
         :first_name => "First Name",
         :last_name => "Last Name",
         :email => "Email",
         :hashed_password => "Hashed Password"
       ),
-      AccountAdmin.create!(
+      Administrator.create!(
         :first_name => "First Name",
         :last_name => "Last Name",
         :email => "Email",

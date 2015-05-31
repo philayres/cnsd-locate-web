@@ -50,5 +50,6 @@ CnsdLocateWeb::Application.configure do
   AwsKey_CndsLocateWeb = 'AKIAIS43FGLLOS25XZMQ'
   AwsSecret_CndsLocateWeb = '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'
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5501 }
   
 end

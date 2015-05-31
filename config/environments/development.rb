@@ -46,6 +46,7 @@ CnsdLocateWeb::Application.configure do
   AwsSecret_CndsLocateWeb = 'oyZLWXJHOdSTnOOEhM1FUPankAezJqS4IeSNz4rY'
 
   
-  
-
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5501 }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {domain: 'services.consected.com', api_key: 'key-5nq3lxbkqbl8k9p0c3clhq8ttbedlkf8'}
 end
