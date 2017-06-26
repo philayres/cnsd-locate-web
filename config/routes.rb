@@ -1,22 +1,13 @@
 CnsdLocateWeb::Application.routes.draw do
   
-  
-  
-  
-  devise_for :users
-  resources :logins, only: [:show, :index]
-  
-  resources :accounts, shallow: true do   
-    resources :administrators
-  end
-
   root 'pages#index'
 
   namespace :services do
     resources :locate 
     resources :tweets
   end
-  
+
+  get 'status' => 'status#index'  
   get 'web_services' => 'pages#web_services'
   get 'contact' => 'pages#contact'
   get 'privacy' => 'pages#privacy'

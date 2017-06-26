@@ -19,9 +19,6 @@ CnsdLocateWeb::Application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-  # Raise an error on page load if there are pending migrations
-  config.active_record.migration_error = :page_load
-
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -41,12 +38,4 @@ CnsdLocateWeb::Application.configure do
   TwitterConsumerKeySecret = 'RCcUV3ZgrupVLH6Wv6HsGDYKRVy0ztJWlL4YHDjby1oCHJDieO'
   
   GoogleMapsApiKey = 'AIzaSyD_b6wPg2CjKRGjeO5oBYM2uZCveuX1Ij4'
-  
-  AwsKey_CndsLocateWeb = 'AKIAIS43FGLLOS25XZMQ'
-  AwsSecret_CndsLocateWeb = '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'
-
-  
-  config.action_mailer.default_url_options = { host: 'localhost', port: 5501 }
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {domain: 'services.consected.com', api_key: 'key-5nq3lxbkqbl8k9p0c3clhq8ttbedlkf8'}
 end

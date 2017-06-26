@@ -14,7 +14,7 @@ development:
   database: cnsd-locate-web_development
   pool: 5
   username: u_cnsd_locate_w
-  password: "*676243218923905CF94CB52A3C9D3EB30CE8E20D"
+  password: "test123"
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,14 +26,19 @@ test:
   database: cnsd-locate-web_test
   pool: 5
   username: u_cnsd_locate_w
-  password: "*676243218923905CF94CB52A3C9D3EB30CE8E20D"
+  password: "test123"
   socket: /var/run/mysqld/mysqld.sock
 
-production:
+production:  
   adapter: mysql2
   encoding: utf8
   database: cnsd-locate-web_production
   pool: 5
+  #username: root
+  #password: 'JKDGH*&^ui238yh'
   username: u_cnsd_locate_w
-  password: ""
+  password: "jqweyr82!1yn8h(u2d_hg+9123y"
   socket: /var/run/mysqld/mysqld.sock
+  # GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON `cnsd-locate-web_production`.* to 'u_cnsd_locate_w'@'localhost';
+  
+  

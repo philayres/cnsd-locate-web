@@ -21,17 +21,3 @@
 
 en:
   hello: "Hello world"
-  
-  account:
-    owner_name: "Application Name"
-  
-  helpers:
-    label:
-      account:
-        owner_name: "Application Name"
-      account_admins:
-        first_name: "First Name"
-        last_name: "Last Name"
-        
-      login:
-        user_id: "Username"

@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.13'
+gem 'rails', '~> 4.2'
+
 
 gem 'mysql2'
 
@@ -31,9 +32,6 @@ gem 'dalli'
 
 gem 'httpclient'
 gem 'twitter'
-
-gem 'fog'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -53,11 +51,8 @@ end
 gem 'simplecov', :require => false, :group => :test
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
 
-gem 'devise'
-
-gem 'mailgun_rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 

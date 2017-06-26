@@ -36,20 +36,4 @@ CnsdLocateWeb::Application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  LocateServer = 'http://localhost:15501'
-  LocateClientId = 'cnsd_locate_web_123yujy9812y38'
-  LocateClientSecret = '78bf1cb75a5c62efa16b133c3e1205880add6d4fd4099e989bcf6223b7a40ca2'
-
-  
-  TwitterAccessToken ='76816072-zwEa6H3yUZX8k5RxchL8ldi5PzBPCcRVCasqFQHm0'
-  TwitterAccessTokenSecret = 'BEgasLfs2usyWUuTmixIyd0qJ96heE1TmwUuQVbjz0rOm'
-  TwitterConsumerKey = '4UhCiVNZfyD4KAPhcdeCgtAUd'
-  TwitterConsumerKeySecret = 'RCcUV3ZgrupVLH6Wv6HsGDYKRVy0ztJWlL4YHDjby1oCHJDieO'
-  
-  
-  AwsKey_CndsLocateWeb = 'AKIAIS43FGLLOS25XZMQ'
-  AwsSecret_CndsLocateWeb = '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'
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 5501 }
-  
 end

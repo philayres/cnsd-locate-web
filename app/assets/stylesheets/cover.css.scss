@@ -102,7 +102,14 @@ body {
   border-bottom-color: #fff;
 }
 
-
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
 
 
 /*
@@ -150,30 +157,6 @@ button:active, a.btn:active {
 
 .warning, .error {
   border: 3px dotted silver;
-}
-
-
-h1 small, .h1 small{
-color: inherit;
-  }
-
-a[aria-expanded="true"] span.caret {
-  content: "";
-  border-top: 0;
-  border-bottom: 4px solid;
-}
-  
-
-
-/************* MEDIA QUERIES ***************/
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
 }
 
 /*

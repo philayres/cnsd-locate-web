@@ -18,3 +18,5 @@
 /config/environments/test.rb.rb
 /config/environments/development.rb
 /install.md
+/config/initializers/secret_token.rb
+
