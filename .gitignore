@@ -18,6 +18,6 @@
 /config/environments/test.rb
 /config/environments/development.rb
 /install.md
-/config/initializers/secret_token.rb
+config/initializers/secret_token.rb
 
 /tmp/*
