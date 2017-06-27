@@ -1,0 +1,15 @@
+<div class="pull-right" style="display: inline-block; text-align: right;">  
+  <p><%= link_to 'List Accounts', accounts_path, class: "btn btn-info" %></p>  
+</div>
+<h1>
+  Application <small><%= @account.owner_name %></small>
+</h1>
+
+<p>The administrator of this application has invited you as an admin.</p>
+
+<%=form_for @administrator do |f|%>
+  <%= f.submit "Accept Invitation", name: 'administrator[accept]' %>
+  <%= f.submit "Decline Invitation", name: 'administrator[decline]' %>
+<% end %>
+
+

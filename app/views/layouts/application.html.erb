@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render partial: 'layouts/meta_tags' %>
+	
+  <link rel="icon" href="<?php echo $cdn_img ?>/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="<?php echo $cdn_img ?>/favicon.ico" type="image/x-icon" />  
+  
+  
+  <link href='//fonts.googleapis.com/css?family=News+Cycle|Varela+Round|Ubuntu' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js" async></script>
+  <%= javascript_include_tag "application" %>
+  <% if @use_google_maps %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= GoogleMapsApiKey %>"></script>
+  <!-- OK -->
+  <% end %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%=@layout ? @layout : 'regular-cover'%>">
+  <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="/">Consected</a></h3>
+              <%=render partial: 'layouts/navbar' %>
+            </div>
+          </div>
+
+          <%=yield %>
+
+          <%=render partial: 'layouts/footer'%>
+          <%=render partial: 'layouts/common_templates' %>
+        </div>
+
+      </div>
+
+    </div>
+
+</body>
+</html>

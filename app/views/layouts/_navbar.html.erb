@@ -1,0 +1,6 @@
+<nav>
+  <ul class="nav masthead-nav">    
+    <li <%= (action_name == 'index' && controller_name == 'pages' ? 'class="active"' : '').html_safe %>><a href="/">Home</a></li>
+    <li <%= (action_name == 'contact' ? 'class="active"' : '').html_safe %>><a href="http://www.consected.com/contact">Contact</a></li>
+  </ul>
+</nav>
