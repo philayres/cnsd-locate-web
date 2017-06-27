@@ -34,10 +34,8 @@ production:
   encoding: utf8
   database: cnsd-locate-web_production
   pool: 5
-  #username: root
-  #password: 'JKDGH*&^ui238yh'
   username: u_cnsd_locate_w
-  password: "jqweyr82!1yn8h(u2d_hg+9123y"
+  password: ENV['cnsd-locate-web-db-pw']
   socket: /var/run/mysqld/mysqld.sock
   # GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON `cnsd-locate-web_production`.* to 'u_cnsd_locate_w'@'localhost';
   
